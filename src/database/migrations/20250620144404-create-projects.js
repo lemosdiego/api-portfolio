@@ -15,25 +15,27 @@ export async function up(queryInterface, Sequelize) {
     },
     description: {
       type: Sequelize.TEXT,
+      allowNull: true,
+    },
+    technologies: {
+      type: Sequelize.ARRAY(Sequelize.STRING),
       allowNull: false,
     },
     image_url: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     project_url: {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    createdAt: {
-      allowNull: false,
+    created_at: {
       type: Sequelize.DATE,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      allowNull: false,
     },
-    updatedAt: {
-      allowNull: false,
+    updated_at: {
       type: Sequelize.DATE,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      allowNull: false,
     },
   });
 }
