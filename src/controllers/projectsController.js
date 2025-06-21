@@ -3,18 +3,28 @@ import crypto from "crypto";
 
 export const createProject = async (req, res) => {
   try {
-    const projectCreate = {
+    const { name, description, technologies, image_url, project_url } =
+      req.body;
+
+    if (!name || !description || !technologies) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const project = await Projects.create({
       id: crypto.randomUUID(),
-      name: req.body.name,
-      description: req.body.description,
-      technologies: req.body.technologies,
-      image_url: req.body.image_url,
-      project_url: req.body.project_url,
-    };
-    const project = await Projects.create(projectCreate);
-    res.status(201).json(project);
-  } catch {
-    res.status(409).json({ message: "Error creating user" });
+      name,
+      description,
+      technologies,
+      image_url,
+      project_url,
+    });
+
+    return res.status(201).json(project);
+  } catch (error) {
+    console.error("Error creating project:", error);
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
   }
 };
 export const getProject = async (req, res) => {
