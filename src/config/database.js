@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
-dotenv.config();
-dotenv.config({ path: ".env.local" });
+dotenv.config({
+  path: process.env.NODE_ENV === "development" ? ".env.local" : ".env",
+});
 
 export default {
   dialect: "postgres",
