@@ -28,5 +28,5 @@ sequelize
     });
   })
   .catch((err) => {
-    console.log("Erro");
+    console.error("Erro ao conectar ao banco:", err);
   });
