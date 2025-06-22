@@ -16,6 +16,7 @@ User.init(sequelize);
 app.use("/projects", projectRoutes);
 app.use("/users", userRoutes);
 
+//configuração do servidor
 const PORT = process.env.PORT || 3000;
 
 sequelize
