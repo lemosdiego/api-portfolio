@@ -101,3 +101,9 @@ docker run --name api-portfolio-postgres -e POSTGRES_USER=seu_usuario -e POSTGRE
 ```bash
 npx sequelize-cli db:migrate
 ```
+
+### Hospedagem do projeto
+
+A API está hospedada na plataforma Render como Web Service.
+
+PostgreSQL na nuvem via Render (uso interno da API).
