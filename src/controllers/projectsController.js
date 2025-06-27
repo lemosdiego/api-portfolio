@@ -65,6 +65,7 @@ export const editProject = async (req, res) => {
         technologies: req.body.technologies,
         image_url: req.body.image_url,
         project_url: req.body.project_url,
+        repository_url: req.body.repository_url,
       },
       {
         where: { id: req.params.id },
