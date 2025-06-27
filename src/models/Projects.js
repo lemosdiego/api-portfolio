@@ -24,6 +24,10 @@ class Projects extends Model {
           type: Sequelize.STRING,
           allowNull: true,
         },
+        repository_url: {
+          type: Sequelize.STRING,
+          allowNull: true,
+        },
       },
       { sequelize }
     );

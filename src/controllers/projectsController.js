@@ -3,8 +3,14 @@ import crypto from "crypto";
 
 export const createProject = async (req, res) => {
   try {
-    const { name, description, technologies, image_url, project_url } =
-      req.body;
+    const {
+      name,
+      description,
+      technologies,
+      image_url,
+      project_url,
+      repository_url,
+    } = req.body;
 
     if (!name || !description || !technologies) {
       return res.status(400).json({ message: "Missing required fields" });
@@ -17,6 +23,7 @@ export const createProject = async (req, res) => {
       technologies,
       image_url,
       project_url,
+      repository_url,
     });
 
     return res.status(201).json(project);

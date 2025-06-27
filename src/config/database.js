@@ -3,6 +3,8 @@
 //   path: process.env.NODE_ENV === "development" ? ".env.local" : ".env",
 // });
 
+// const isProduction = process.env.NODE_ENV === "production";
+
 // export default {
 //   dialect: "postgres",
 //   host: process.env.DB_HOST,
@@ -15,18 +17,17 @@
 //     underscored: true,
 //     underscoredAll: true,
 //   },
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//       rejectUnauthorized: false, // aceita certificado autoassinado
-//     },
-//   },
+//   dialectOptions: isProduction
+//     ? {
+//         ssl: {
+//           require: true,
+//           rejectUnauthorized: false,
+//         },
+//       }
+//     : {},
 // };
-import dotenv from "dotenv";
-dotenv.config({
-  path: process.env.NODE_ENV === "development" ? ".env.local" : ".env",
-});
 
+const useSSL = !!process.env.DB_SSL === "true"; // controle via variável de ambiente
 const isProduction = process.env.NODE_ENV === "production";
 
 export default {
@@ -41,12 +42,13 @@ export default {
     underscored: true,
     underscoredAll: true,
   },
-  dialectOptions: isProduction
-    ? {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      }
-    : {},
+  dialectOptions:
+    useSSL || isProduction
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        }
+      : {},
 };
