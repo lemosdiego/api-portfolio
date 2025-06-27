@@ -36,14 +36,17 @@ export const createProject = async (req, res) => {
 };
 export const getProject = async (req, res) => {
   try {
-    const projects = await Projects.findAll();
+    const projects = await Projects.findAll({
+      order: [["created_at", "DESC"]],
+    });
     res.status(200).json(projects);
-  } catch {
+  } catch (error) {
     res
       .status(500)
       .json({ message: "Error getting projects", error: error.message });
   }
 };
+
 export const deletProject = async (req, res) => {
   try {
     const project = await Projects.destroy({
