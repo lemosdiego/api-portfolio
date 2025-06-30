@@ -58,48 +58,6 @@ Este projeto tem como objetivo tanto o uso prático no meu portfólio quanto o a
 │   └───server.js      # Arquivo principal que inicializa o servidor Express
 ```
 
-## Como Rodar o Projeto
-
-### Pré-requisitos
-
-- Node.js instalado
-- Docker instalado (para rodar PostgreSQL localmente)
-
-### Passos
-
-#### Clonar repositório
-
-```bash
-git clone <URL_DO_REPOSITORIO>
-cd <NOME_DO_REPOSITORIO>
-```
-
-#### Instalar dependências
-
-```bash
-npm install
-```
-
-#### Criar o arquivo .env com as variáveis:
-
-```bash
- DB_HOST=localhost
- DB_PORT=5432
- DB_USERNAME=seu_usuario
- DB_PASSWORD=sua_senha
- DB_DATABASE=nome_do_banco
-```
-
-#### Rodar o container PostgreSQL via Docker com seu usuário, senha e nome do banco
-
-```bash
-docker run --name api-portfolio-postgres -e POSTGRES_USER=seu_usuario -e POSTGRES_PASSWORD=sua_senha -e POSTGRES_DB=nome_do_banco -p 5432:5432 -d postgres
-```
-
-#### Rodar as migrations para criar as tabelas
-
-```bash
-npx sequelize-cli db:migrate
 ```
 
 ### Hospedagem do projeto
@@ -107,3 +65,4 @@ npx sequelize-cli db:migrate
 A API está hospedada na plataforma Render como Web Service.
 
 PostgreSQL na nuvem via Render (uso interno da API).
+```

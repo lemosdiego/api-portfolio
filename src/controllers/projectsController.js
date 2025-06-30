@@ -46,7 +46,6 @@ export const getProject = async (req, res) => {
       .json({ message: "Error getting projects", error: error.message });
   }
 };
-
 export const deletProject = async (req, res) => {
   try {
     const project = await Projects.destroy({
